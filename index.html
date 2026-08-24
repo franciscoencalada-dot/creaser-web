@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Creaser Psicología en Quillota. Psicoterapia para adolescentes y adultos. Francisco Encalada, Psicólogo Magíster Clínico.">
+<meta name="theme-color" content="#020406">
+<title>creaser // Psicología | Quillota</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   CORE VARIABLES & RESET
+====================================================== */
+:root {
+    --aqua: #00dff5;
+    --aqua-light: #63efff;
+    --black: #020406;
+    --white: #eaffff;
+    --text: #b7c9cd;
+    --muted: #71858a;
+    --border: rgba(0, 223, 245, 0.24);
+    --nav-bg: rgba(2, 6, 9, 0.78);
+    --panel-bg: rgba(2, 10, 13, 0.58);
+    --display: 'Michroma', sans-serif;
+    --mono: 'Fira Code', monospace;
+    --max: 1120px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+/* =====================================================
+   BASE STYLES & BACKGROUND
+====================================================== */
+body {
+    min-height: 100vh;
+    color: var(--text);
+    background-color: var(--black);
+    font-family: var(--mono);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-image:
+        radial-gradient(circle at 50% 12%, rgba(0,223,245,.11), transparent 38%),
+        radial-gradient(circle at 50% 100%, rgba(0,120,145,.07), transparent 45%),
+        linear-gradient(rgba(0,223,245,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,223,245,.035) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    background-attachment: fixed;
+}
+body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.48) 100%);
+}
+body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(0,223,245,.012) 4px);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+/* =====================================================
+   NAVIGATION
+====================================================== */
+nav {
+    position: sticky; top: 0; z-index: 100; min-height: 64px; padding: 10px 30px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+.nav-logo { color: var(--aqua); font-family: var(--display); font-size: 1rem; letter-spacing: 1px; text-shadow: 0 0 9px rgba(0,223,245,.45); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--muted); font-size: .8rem; transition: .25s ease; }
+.nav-links a::before { content: "./"; color: var(--aqua); opacity: .55; margin-right: 4px; }
+.nav-links a:hover { color: var(--aqua-light); text-shadow: 0 0 10px rgba(0,223,245,.55); }
+
+/* =====================================================
+   HERO SECTION
+====================================================== */
+.hero { min-height: calc(100svh - 64px); display: flex; align-items: center; position: relative; }
+.hero-content { width: 100%; padding: 80px 20px; text-align: center; }
+.terminal-brand {
+    min-height: 120px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    color: var(--aqua-light); font-family: var(--display);
+    font-size: clamp(1.7rem, 5vw, 3.8rem); letter-spacing: 1px;
+    text-shadow: 0 0 14px rgba(0,223,245,.7), 0 0 34px rgba(0,223,245,.25);
+}
+/* Mantiene el cursor pegado al texto */
+#typed-text { display: inline-block; white-space: pre-wrap; }
+.typed-cursor {
+    display: inline-block; width: .075em; height: .82em; margin-left: 6px; background: var(--aqua);
+    box-shadow: 0 0 10px var(--aqua); animation: blink .85s steps(1) infinite; vertical-align: baseline;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-description {
+    width: min(760px, 100%); margin: 20px auto 0; color: var(--text);
+    font-size: clamp(.95rem, 1.7vw, 1.1rem); line-height: 1.85;
+}
+.btn-group { display: flex; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+.btn {
+    min-height: 48px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--aqua); background: rgba(0,223,245,.045); color: var(--aqua);
+    font-size: .8rem; letter-spacing: .8px; transition: .25s ease; border-radius: 2px;
+}
+.btn:hover { background: var(--aqua); color: var(--black); box-shadow: 0 0 24px rgba(0,223,245,.42); }
+.btn-secondary { border-color: rgba(234,255,255,.18); background: rgba(0,0,0,.3); color: var(--white); }
+
+/* =====================================================
+   GLOBAL LAYOUT (SECTIONS & PANELS)
+====================================================== */
+section { padding: 80px 0; }
+.section-label { margin-bottom: 12px; color: var(--aqua); font-size: .75rem; letter-spacing: 3px; }
+h2 {
+    margin-bottom: 32px; color: var(--white); font-family: var(--display);
+    font-size: clamp(1.25rem, 2.7vw, 1.9rem); line-height: 1.4; text-shadow: 0 0 14px rgba(0,223,245,.22);
+}
+.glass-panel {
+    background: var(--panel-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border); border-radius: 4px;
+    box-shadow: 0 8px 35px rgba(0,0,0,.45), inset 0 0 18px rgba(0,223,245,.025);
+}
+
+/* =====================================================
+   PROFILE MODULE
+====================================================== */
+.profile-panel { padding: 0; max-width: 1000px; overflow: hidden; }
+.profile-layout { display: grid; grid-template-columns: minmax(300px, 40%) 1fr; align-items: stretch; }
+
+/* MODIFICADO: Agregamos Flexbox para centrar y padding para no cortar bordes */
+.profile-portrait {
+    position: relative; overflow: hidden; border-right: 1px solid var(--border); background: #010708;
+    display: flex; align-items: center; justify-content: center; padding: 15px;
+}
+.profile-portrait::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(90deg, transparent 55%, rgba(2,6,9,.28));
+}
+/* MODIFICADO: object-fit contain en lugar de cover */
+.profile-portrait img {
+    width: 100%; height: 100%; object-fit: contain; object-position: center;
+}
+
+.profile-text { padding: 40px; }
+.profile-text .lead {
+    margin-bottom: 24px; color: var(--aqua-light); font-family: var(--display); font-size: 1.05rem; line-height: 1.6;
+}
+.profile-text p { margin-bottom: 16px; }
+
+/* =====================================================
+   SERVICES GRID
+====================================================== */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.service-card { padding: 30px; transition: .3s ease; display: flex; flex-direction: column; }
+.service-card:hover { transform: translateY(-4px); border-color: rgba(0,223,245,.6); background: rgba(0,223,245,.045); }
+.service-number { color: var(--aqua); font-size: .7rem; letter-spacing: 2px; }
+.service-card h3 { margin: 16px 0 12px; color: var(--white); font-family: var(--display); font-size: .85rem; }
+.service-card p { color: var(--muted); font-size: .85rem; line-height: 1.7; margin-bottom: 0; }
+
+/* =====================================================
+   APPROACH TERMINAL
+====================================================== */
+.approach-content { max-width: 900px; padding: 40px; }
+.terminal-title { display: flex; align-items: center; margin-bottom: 24px; color: var(--aqua); font-size: .85rem; }
+.terminal-title .cursor { width: 8px; height: 1.15em; margin-left: 8px; background: var(--aqua); animation: blink 1s steps(1) infinite; }
+.approach-content p { max-width: 800px; margin-bottom: 16px; font-size: .95rem; }
+
+/* =====================================================
+   CONTACT & FOOTER
+====================================================== */
+.contact-content { padding: 40px; text-align: center; }
+.contact-content > p { max-width: 650px; margin: 0 auto 32px; color: var(--muted); }
+.map-container {
+    width: 100%; height: 400px; margin-bottom: 32px; overflow: hidden;
+    border: 1px solid var(--border); background: #000; border-radius: 4px;
+}
+.map-container iframe { width: 100%; height: 100%; border: 0; filter: saturate(.45) contrast(1.15) opacity(.82); }
+
+footer { padding: 30px 0; border-top: 1px dashed var(--border); background: rgba(0,0,0,.72); color: var(--muted); font-size: .75rem; }
+.footer-grid { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-brand { color: var(--aqua); font-family: var(--display); }
+
+/* =====================================================
+   RESPONSIVE DESIGN
+====================================================== */
+@media(max-width: 850px) {
+    .profile-layout { grid-template-columns: 1fr; }
+    .profile-portrait { border-right: 0; border-bottom: 1px solid var(--border); padding: 15px; }
+    /* Eliminado el min-height fijo para evitar distorsión */
+    .profile-portrait img { height: auto; max-height: 500px; margin: 0 auto; }
+}
+
+@media(max-width: 600px) {
+    .container { width: min(100% - 32px, var(--max)); }
+    nav { padding: 12px 16px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 0; }
+    .nav-links a::before { font-size: .75rem; margin: 0; }
+    .hero-content { padding: 60px 10px; }
+    .terminal-brand { font-size: clamp(1.4rem, 7vw, 2.2rem); min-height: 90px; }
+    .hero-description { font-size: .9rem; }
+    .btn-group { flex-direction: column; width: 100%; max-width: 320px; margin-inline: auto; }
+    .btn { width: 100%; }
+    section { padding: 60px 0; }
+    .profile-text { padding: 30px 20px; }
+    .approach-content, .contact-content { padding: 30px 20px; }
+    .service-card { padding: 24px; }
+    .map-container { height: 320px; }
+    .footer-grid { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+    <a href="#inicio" class="nav-logo" aria-label="CREASER Psicología">CREASER //</a>
+    <div class="nav-links">
+        <a href="#perfil">perfil</a>
+        <a href="#psicoterapia">psicoterapia</a>
+        <a href="#enfoque">enfoque</a>
+        <a href="#contacto">contacto</a>
+    </div>
+</nav>
+
+<main>
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <div class="terminal-brand"><span id="typed-text"></span><span class="typed-cursor"></span></div>
+            <p class="hero-description">
+                Una psicología centrada en escuchar tu historia de vida,
+                usando ejemplos sencillos que te ayuden a entender lo que
+                sientes, piensas y vives.
+            </p>
+            <div class="btn-group">
+                <a href="https://wa.me/56945133699" class="btn" target="_blank" rel="noopener">&gt; Contactar por WhatsApp</a>
+                <a href="#perfil" class="btn btn-secondary">Conocer Creaser</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="perfil">
+        <div class="container">
+            <div class="section-label">01 // PROFILE</div>
+            <h2>Francisco Encalada Ahumada</h2>
+            <div class="glass-panel profile-panel profile-layout">
+                <div class="profile-portrait">
+                    <img src="foto_francisco_creaser.png" alt="Psicólogo Francisco Encalada">
+                </div>
+                <div class="profile-text">
+                    <p class="lead">Psicólogo Magíster en Clínica. Reg. 11836. Magíster en Gestión de Organizaciones Escolares.</p>
+                    <p>Dos décadas de trayectoria como psicólogo me han enseñado que la mejor herramienta es entregar apoyo y guía desde ejemplos simples, que ayudan a comprender las dificultades de tu vida.</p>
+                    <p>Ubicación local: <strong style="color:var(--aqua)">[ Quillota ]</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="psicoterapia">
+        <div class="container">
+            <div class="section-label">02 // PSICOTERAPIA</div>
+            <h2>TRABAJO PSICOTERAPÉUTICO</h2>
+            <div class="grid-3">
+                <article class="glass-panel service-card">
+                    <div class="service-number">M0DUL0_01</div>
+                    <h3>ADOLESCENTES</h3>
+                    <p>Una escucha integral para comprender ideas, emociones, relaciones, conflictos y situaciones que se viven en el inicio de la adolescencia desde un mundo hiperconectado.</p>
+                </article>
+                <article class="glass-panel service-card">
+                    <div class="service-number">M0DUL0_02</div>
+                    <h3>ADULTOS</h3>
+                    <p>Una terapia orientada a comprender las dificultades emocionales, donde nuestra única e irrepetible historia de vida es nuestra ruta de trabajo.</p> 
+                </article>
+                <article class="glass-panel service-card">
+                    <div class="service-number">M0DUL0_03</div>
+                    <h3>PAREJAS</h3>
+                    <p>Un espacio para guiar y acompañar a las parejas cuando sienten que “el amor ya no basta”, desde una mirada respetuosa y colaborativa que permita comprender sus dificultades, descubriendo nuevas formas de relacionarse y recuperar el bienestar de la pareja y de las personas que la integran.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="enfoque">
+        <div class="container">
+            <div class="section-label">03 // ENF0QUE</div>
+            <h2>Psicología Cognitiva</h2>
+            <div class="glass-panel approach-content">
+                <div class="terminal-title">&gt; loading... enfoque.txt <span class="cursor"></span></div>
+                <p>La psicoterapia no tiene que convertirse en una "tarea difícil" llena de conceptos o de explicaciones confusas.</p>
+                <p>Mi trabajo consiste en escucharte activamente y ayudarte a comprender lo que te ocurre, buscando explicaciones, dando ejemplos y entregando herramientas que conecten con tu experiencia y tengan sentido para tu vida.</p>
+                <p>Así, podremos comprender cómo nuestras sensaciones, emociones y pensamientos pueden ayudarnos a reencontrar nuestro bienestar</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <div class="section-label">04 // C0NEXI0N</div>
+            <h2>¿Conversamos?</h2>
+            <div class="glass-panel contact-content">
+                <p>Si estás buscando iniciar un proceso de psicoterapia, puedes escribirme y me cuentas sobre tu situación :)</p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.417768195786!2d-71.25458499999999!3d-32.8800901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689cd6cb0f7f867%3A0x78c6cabe5ecb7f4b!2sCreaser%20Psicolog%C3%ADa%2C%20Psic%C3%B3logo%20Francisco%20Encalada.!5e1!3m2!1sen!2scl!4v1787521054581!5m2!1sen!2scl" loading="lazy" allowfullscreen title="Mapa de ubicación de Creaser Psicología en Quillota" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <div class="btn-group">
+                    <a href="https://wa.me/56945133699" class="btn" target="_blank" rel="noopener">&gt; WhatsApp</a>
+                    <a href="https://instagram.com/creaser.cl" class="btn btn-secondary" target="_blank" rel="noopener">&gt; Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div><span class="footer-brand">CREASER //</span> Psicología</div>
+        <div>Quillota · Chile</div>
+        <div>TAMBIEN DISPONIBLE: ONLINE</div>
+    </div>
+</footer>
+
+<script>
+    const text = "creaser psicología :)";
+    const target = document.getElementById("typed-text");
+    let index = 0;
+    
+    function typeText() {
+        if (index < text.length) {
+            target.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeText, 85);
+        }
+    }
+    
+    window.addEventListener("load", () => setTimeout(typeText, 600));
+</script>
+</body>
+</html>
